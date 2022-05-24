@@ -13,7 +13,7 @@ public class InventoryManager : MonoBehaviour
     public GameObject Inventory;
     public GameObject PlayerMovement;
 
-    public static bool InventoryOpen = false;
+    public bool InventoryOpen = false;
 
     public Toggle EnableRemove;
 
@@ -36,18 +36,33 @@ public class InventoryManager : MonoBehaviour
 
     public void Update()
     {
-        if(Input.GetKeyDown("e"))
+        if (Input.GetKeyDown("e") && InventoryOpen == true)
         {
-            Inventory.SetActive(true);
-            Cursor.lockState = CursorLockMode.None;
-            Time.timeScale = 0f;
-            ListItems();
-        }
-        if(Inventory.active == false)
-        {
+            Inventory.SetActive(false);
             Cursor.lockState = CursorLockMode.Locked;
-            Time.timeScale = 1f;
+            InventoryOpen = false;
         }
+        else
+        {
+            if (Input.GetKeyDown("e") && InventoryOpen == false)
+            {
+                Inventory.SetActive(true);
+                InventoryOpen = true;
+                Cursor.lockState = CursorLockMode.None;
+                ListItems();
+            }
+        }
+
+    }
+
+    public void InvOpen()
+    {
+
+    }
+
+    public void InvClose()
+    {
+
     }
 
     public void ListItems()

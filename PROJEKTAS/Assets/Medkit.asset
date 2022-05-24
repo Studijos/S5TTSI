@@ -9,6 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: Arrow
+  m_Script: {fileID: 11500000, guid: e9b0b6362d63e184eb527da835709666, type: 3}
+  m_Name: Medkit
   m_EditorClassIdentifier: 
+  id: 4
+  itemName: Medkit
+  value: 10
+  icon: {fileID: 21300000, guid: e0457008077b62541b2c12a983de3dae, type: 3}

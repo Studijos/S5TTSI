@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 //using TMPro;
 
 public class ProjectileGun : MonoBehaviour
 {
+    public static ProjectileGun Instance;
     public GameObject bullet;
     public int damage;
     [SerializeField]
@@ -14,7 +16,7 @@ public class ProjectileGun : MonoBehaviour
 
     // gun parameters
     public float timeBetweenShooting, spread, reloadTime, timeBetweenShots;
-    public int magazineSize, bulletsPerTap;
+    public int magazineSize, bulletsPerTap, bulletReserve;
     public bool allowButtonHold;
     int bulletsLeft, bulletsShot;
 
@@ -26,6 +28,9 @@ public class ProjectileGun : MonoBehaviour
 
     // graphics
     public GameObject muzzleFlash;
+    public Text ammotext;
+    public GameObject reloadingText;
+
     //public TexMeshProGUI ammunitionDisplay;
 
 
@@ -35,6 +40,7 @@ public class ProjectileGun : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        Instance = this;
         bulletsLeft = magazineSize;
         readyToShoot = true;
     }
@@ -43,7 +49,13 @@ public class ProjectileGun : MonoBehaviour
     void Update()
     {
         MyInput();
+        ammotext.text = bulletsLeft + "/" + bulletReserve;
+        if(bulletReserve == 0 && bulletsLeft == 0)
+        {
+            ammotext.color = Color.red;
+        }
 
+        //ammoLeftText.text = "Bulle0f" + bulletReserve; 
         //show amunition
         //if (ammunitionDisplay != null)
         //    ammunitionDisplay.SetText(bulletsLeft / bulletsPerTap + " / " + magazineSize / bulletsPerTap);
@@ -141,13 +153,30 @@ public class ProjectileGun : MonoBehaviour
     private void Reload()
     {
         reloading = true;
+        reloadingText.SetActive(true);
         Invoke("ReloadFinished", reloadTime);
 
     }
 
     private void ReloadFinished()
     {
-        bulletsLeft = magazineSize;
+        reloadingText.SetActive(false);
+        int bulletsNeeded = magazineSize - bulletsLeft;
+        if (bulletReserve > magazineSize)
+        {
+            bulletsLeft = magazineSize;
+            bulletReserve -= bulletsNeeded;
+        }
+        else if(bulletReserve > 0)
+        {
+            bulletsLeft += Mathf.Min(bulletReserve, bulletsNeeded);
+            bulletReserve -= Mathf.Min(bulletReserve, bulletsNeeded);
+        }
         reloading = false;
+    }
+
+    public void IncreaseAmmo(int value)
+    {
+        bulletReserve += value;
     }
 }

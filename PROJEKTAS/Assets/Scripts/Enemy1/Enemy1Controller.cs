@@ -17,7 +17,7 @@ public class Enemy1Controller : MonoBehaviour
     float stopDistance;
 
     [SerializeField]
-    float damage;
+    int damage;
 
     public float health = 100;
     public bool dead = false;
@@ -159,7 +159,7 @@ public class Enemy1Controller : MonoBehaviour
         if (Time.time - lastAttackTime >= attackCooldown)
         {
             lastAttackTime = Time.time;
-            player.GetComponent<PlayerMovementCustom>().TakeDamage(damage);
+            player.GetComponent<Player>().TakeDamage(damage);
         }
         myAnimator.SetBool("isWalking", false);
         myAnimator.SetBool("isRunning", false);

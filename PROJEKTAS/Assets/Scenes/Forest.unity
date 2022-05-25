@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.3731193, g: 0.38073996, b: 0.35872698, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -249,6 +249,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &282615607 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1370269805322574389, guid: 5a7b4166f43263a43abb07a606c15560, type: 3}
+  m_PrefabInstance: {fileID: 8465287228894430525}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &311704913 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7711547864012072777, guid: 5a7b4166f43263a43abb07a606c15560, type: 3}
@@ -283,13 +288,24 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &678240466 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3589180150526264782, guid: 5a7b4166f43263a43abb07a606c15560, type: 3}
   m_PrefabInstance: {fileID: 8465287228894430525}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &678240468 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8465287228485690857, guid: 5a7b4166f43263a43abb07a606c15560, type: 3}
+  m_PrefabInstance: {fileID: 8465287228894430525}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 678240466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1d784d06bb036f45919a58228bd1905, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &722848074
 GameObject:
   m_ObjectHideFlags: 0
@@ -382,7 +398,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!4 &842596997 stripped
 Transform:
@@ -726,6 +742,11 @@ RectTransform:
   m_AnchoredPosition: {x: -433.86697, y: -114.60623}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!198 &1236622154 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 1370269804547147864, guid: 5a7b4166f43263a43abb07a606c15560, type: 3}
+  m_PrefabInstance: {fileID: 8465287228894430525}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1299454220
 GameObject:
   m_ObjectHideFlags: 0
@@ -917,7 +938,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1765005285
 GameObject:
@@ -1601,7 +1622,7 @@ Transform:
   - {fileID: 4349708415949947763}
   - {fileID: 842596997}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3692140547908322266
 MonoBehaviour:
@@ -2146,6 +2167,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 598579790101659688, guid: c3caccc0d90666343ae2a149c2c47d6e, type: 3}
+      propertyPath: zombieManager
+      value: 
+      objectReference: {fileID: 678240468}
     - target: {fileID: 6440493015048655641, guid: c3caccc0d90666343ae2a149c2c47d6e, type: 3}
       propertyPath: m_Name
       value: Zombie
@@ -4511,7 +4536,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1970928185425733930, guid: 5a7b4166f43263a43abb07a606c15560, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1970928185425733930, guid: 5a7b4166f43263a43abb07a606c15560, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4560,23 +4585,35 @@ PrefabInstance:
     - target: {fileID: 8465287228485690857, guid: 5a7b4166f43263a43abb07a606c15560, type: 3}
       propertyPath: zombie
       value: 
-      objectReference: {fileID: 6440493015048655641, guid: c3caccc0d90666343ae2a149c2c47d6e, type: 3}
+      objectReference: {fileID: 598579790101659694, guid: c3caccc0d90666343ae2a149c2c47d6e, type: 3}
     - target: {fileID: 8465287229188890058, guid: 5a7b4166f43263a43abb07a606c15560, type: 3}
       propertyPath: ammotext
       value: 
       objectReference: {fileID: 2096388170}
     - target: {fileID: 8465287229188890058, guid: 5a7b4166f43263a43abb07a606c15560, type: 3}
+      propertyPath: attackPoint
+      value: 
+      objectReference: {fileID: 282615607}
+    - target: {fileID: 8465287229188890058, guid: 5a7b4166f43263a43abb07a606c15560, type: 3}
+      propertyPath: muzzleFlash
+      value: 
+      objectReference: {fileID: 1236622154}
+    - target: {fileID: 8465287229188890058, guid: 5a7b4166f43263a43abb07a606c15560, type: 3}
       propertyPath: magazineSize
-      value: 3
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 8465287229188890058, guid: 5a7b4166f43263a43abb07a606c15560, type: 3}
       propertyPath: bulletReserve
-      value: 15
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 8465287229188890058, guid: 5a7b4166f43263a43abb07a606c15560, type: 3}
       propertyPath: reloadingText
       value: 
       objectReference: {fileID: 1765074847}
+    - target: {fileID: 8465287229188890058, guid: 5a7b4166f43263a43abb07a606c15560, type: 3}
+      propertyPath: allowButtonHold
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5a7b4166f43263a43abb07a606c15560, type: 3}
 --- !u!114 &8757343107952713592

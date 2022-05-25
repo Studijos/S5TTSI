@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9b0b6362d63e184eb527da835709666, type: 3}
   m_Name: Arrow 1
   m_EditorClassIdentifier: 
-  id: 0
-  itemName: 
-  value: 0
-  icon: {fileID: 0}
+  id: 1
+  itemName: Arrow
+  value: 10
+  icon: {fileID: 21300000, guid: fbbefa9fabacc884daed23f585e59ac9, type: 3}

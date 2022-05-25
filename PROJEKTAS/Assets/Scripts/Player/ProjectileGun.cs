@@ -28,7 +28,6 @@ public class ProjectileGun : MonoBehaviour
 
     // graphics
     public ParticleSystem muzzleFlash;
-    public GameObject muzzleFlash;
     public Text ammotext;
     public GameObject reloadingText;
 

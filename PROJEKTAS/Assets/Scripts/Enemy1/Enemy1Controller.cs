@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class Enemy1Controller : MonoBehaviour
 {
     public GameObject zombie;
-    public GameObject zombieManager;
+    public ZombieManager zombieManager;
 
     Animator myAnimator;
     [SerializeField]
@@ -25,16 +25,14 @@ public class Enemy1Controller : MonoBehaviour
     public Transform player;
     public LayerMask groundMask, playerMask;
     // Patrolling
-    public Vector3 destination;
-    bool destinationSet;
-    public float destinationRange;
+    //public Vector3 destination;
+    //public float destinationRange;
     
 
     // Atacking
     float lastAttackTime = 0;
     float attackCooldown = 2;
     public float timeBetweenAttacks;
-    bool attacked;
 
     // States
     public float sightRange, attackRange;
@@ -42,6 +40,7 @@ public class Enemy1Controller : MonoBehaviour
 
     private void Start()
     {
+        zombieManager = FindObjectOfType<ZombieManager>();
         health = 100;
         player = GameObject.FindGameObjectWithTag("Player").transform;
         agent = GetComponent<NavMeshAgent>();
@@ -93,6 +92,7 @@ public class Enemy1Controller : MonoBehaviour
         //if (playerInAttackRange && playerInSightRange) Attack();
         
     }
+    /*
     private void SearchDestination()
     {
         float randomZ = Random.Range(-destinationRange, destinationRange);
@@ -108,9 +108,12 @@ public class Enemy1Controller : MonoBehaviour
         }
         
     }
+    */
 
     private void Patrol()
     {
+        //agent.isStopped = false;
+        agent.transform.LookAt(player.transform.position);
         agent.speed = walkSpeed;
         agent.SetDestination(player.transform.position);
         myAnimator.enabled = true;
@@ -140,21 +143,20 @@ public class Enemy1Controller : MonoBehaviour
     private void Chase()
     {
         //agent.isStopped = false;
+        agent.transform.LookAt(player.transform.position);
         agent.speed = runSpeed;
         agent.SetDestination(player.transform.position);
         myAnimator.enabled = true;
         myAnimator.SetBool("isWalking", false);
         myAnimator.SetBool("isAttacking", false);
         myAnimator.SetBool("isRunning", true);
-        //myAnimator.SetBool("isWalking", true);
     }
 
     private void Attack()
     {
-        //agent.SetDestination(transform.position);
-        //transform.LookAt(player);
-        //agent.isStopped = true;
-        agent.SetDestination(player.transform.position);
+        //agent.transform.LookAt(player.transform.position);
+        agent.SetDestination(agent.transform.position);
+        
 
         if (Time.time - lastAttackTime >= attackCooldown)
         {
@@ -179,10 +181,10 @@ public class Enemy1Controller : MonoBehaviour
         */
     }
 
-    private void ResetAttack()
-    {
-        attacked = false;
-    }
+    //private void ResetAttack()
+    //{
+    //    attacked = false;
+    //}
 
     public void TakeDamage(int damage)
     {
@@ -191,7 +193,6 @@ public class Enemy1Controller : MonoBehaviour
         if (health <= 0)
         {
             DestroyEnemy();
-            //Invoke(nameof(DestroyEnemy), .5f);
         }
     }
 
@@ -200,20 +201,9 @@ public class Enemy1Controller : MonoBehaviour
         
         myAnimator.SetBool("isDead", true);
         dead = true;
-        //ZombieManager sn = gameObject.GetComponent<ZombieManager>();
-        //SpawnEnemy();
-        //Destroy(gameObject);
+        zombieManager.enemyCount--;
     }
 
-    public void SpawnEnemy()
-    {
-        ZombieManager sn = gameObject.GetComponent<ZombieManager>();
-        var spawners = sn.spawners;
-
-        int spawnPointID = Random.Range(0, spawners.Length);
-        Vector3 spawnPos = new Vector3(spawners[spawnPointID].transform.position.x, 0f, spawners[spawnPointID].transform.position.z);
-        Instantiate(zombie, spawnPos, Quaternion.identity);
-    }
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;

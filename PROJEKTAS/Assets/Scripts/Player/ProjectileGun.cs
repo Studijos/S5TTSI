@@ -25,7 +25,7 @@ public class ProjectileGun : MonoBehaviour
     public Transform attackPoint;
 
     // graphics
-    public GameObject muzzleFlash;
+    public ParticleSystem muzzleFlash;
     //public TexMeshProGUI ammunitionDisplay;
 
 
@@ -74,7 +74,7 @@ public class ProjectileGun : MonoBehaviour
     {
         readyToShoot = false;
 
-
+        muzzleFlash.Play();
         //Ray ray = fpsCam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
         RaycastHit hit;
 
@@ -104,12 +104,12 @@ public class ProjectileGun : MonoBehaviour
 
 
         // Spawn the bullet
-        GameObject currentBullet = Instantiate(bullet, attackPoint.position, Quaternion.identity);
+        //GameObject currentBullet = Instantiate(bullet, attackPoint.position, Quaternion.identity);
         // rotate bullet towards shooting direction
-        currentBullet.transform.forward = directionPrecise.normalized;
+        //currentBullet.transform.forward = directionPrecise.normalized;
 
         // add forces to bullet
-        currentBullet.GetComponent<Rigidbody>().AddForce(directionPrecise.normalized * shootForce, ForceMode.Impulse);
+        //currentBullet.GetComponent<Rigidbody>().AddForce(directionPrecise.normalized * shootForce, ForceMode.Impulse);
         //bullet.GetComponent<RigidBody>().AddForce(fpsCam.transform.up * upwardForce, ForceMode.Impulse);
 
         // Invoke resetShot function

@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9b0b6362d63e184eb527da835709666, type: 3}
   m_Name: Ammo
   m_EditorClassIdentifier: 
-  id: 0
-  itemName: 
-  value: 0
-  icon: {fileID: 0}
-  itemType: 0
+  id: 1
+  itemName: Ammo
+  value: 10
+  icon: {fileID: 21300000, guid: e5ecf50ab580e874da42fac906a030e4, type: 3}
+  itemType: 1

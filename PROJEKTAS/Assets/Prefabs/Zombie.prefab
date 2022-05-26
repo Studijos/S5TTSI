@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &598579789830993523
+--- !u!1 &6983319504459310138
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,8 +8,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 598579789830993484}
-  - component: {fileID: 598579789830993485}
+  - component: {fileID: 6983319504459310085}
+  - component: {fileID: 6983319504459310084}
   m_Layer: 8
   m_Name: EnemyBody
   m_TagString: Untagged
@@ -17,28 +17,28 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &598579789830993484
+--- !u!4 &6983319504459310085
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 598579789830993523}
+  m_GameObject: {fileID: 6983319504459310138}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1.899, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 598579790101659690}
+  m_Father: {fileID: 6983319505803727459}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &598579789830993485
+--- !u!136 &6983319504459310084
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 598579789830993523}
+  m_GameObject: {fileID: 6983319504459310138}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
@@ -46,7 +46,7 @@ CapsuleCollider:
   m_Height: 3.8
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!1 &598579790101659694
+--- !u!1 &6983319505803727463
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -54,10 +54,10 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 598579790101659690}
-  - component: {fileID: 598579790101659689}
-  - component: {fileID: 598579790101659688}
-  - component: {fileID: 598579790101659695}
+  - component: {fileID: 6983319505803727459}
+  - component: {fileID: 6983319505803727456}
+  - component: {fileID: 6983319505803727457}
+  - component: {fileID: 6983319505803727462}
   m_Layer: 8
   m_Name: Zombie
   m_TagString: Enemy
@@ -65,35 +65,35 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &598579790101659690
+--- !u!4 &6983319505803727459
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 598579790101659694}
+  m_GameObject: {fileID: 6983319505803727463}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 216.26, y: 1.25, z: 195.99}
+  m_LocalPosition: {x: 216.26, y: 1.25, z: 191.24}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 598579789830993484}
-  - {fileID: 598579789391669290}
+  - {fileID: 6983319504459310085}
+  - {fileID: 6983319504363928163}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!195 &598579790101659689
+--- !u!195 &6983319505803727456
 NavMeshAgent:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 598579790101659694}
+  m_GameObject: {fileID: 6983319505803727463}
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.6
   m_Speed: 3.5
-  m_Acceleration: 8
+  m_Acceleration: 30
   avoidancePriority: 50
   m_AngularSpeed: 120
   m_StoppingDistance: 0
@@ -104,27 +104,28 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &598579790101659688
+--- !u!114 &6983319505803727457
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 598579790101659694}
+  m_GameObject: {fileID: 6983319505803727463}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 47ed6c001e316e44ba8d6ad2698a923f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zombie: {fileID: 598579790101659694}
+  zombie: {fileID: 6983319505803727463}
   zombieManager: {fileID: 0}
-  walkSpeed: 3
-  runSpeed: 5
+  playerCore: {fileID: 0}
+  walkSpeed: 7
+  runSpeed: 9
   stopDistance: 4
   damage: 10
   health: 100
   dead: 0
-  agent: {fileID: 598579790101659689}
+  agent: {fileID: 6983319505803727456}
   player: {fileID: 0}
   groundMask:
     serializedVersion: 2
@@ -132,20 +133,18 @@ MonoBehaviour:
   playerMask:
     serializedVersion: 2
     m_Bits: 128
-  destination: {x: 0, y: 0, z: 0}
-  destinationRange: 100
   timeBetweenAttacks: 2
-  sightRange: 15
+  sightRange: 20
   attackRange: 4
   playerInAttackRange: 0
   playerInSightRange: 0
---- !u!54 &598579790101659695
+--- !u!54 &6983319505803727462
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 598579790101659694}
+  m_GameObject: {fileID: 6983319505803727463}
   serializedVersion: 2
   m_Mass: 1.92
   m_Drag: 0
@@ -155,12 +154,12 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!1001 &598579789391803136
+--- !u!1001 &6983319504364052809
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 598579790101659690}
+    m_TransformParent: {fileID: 6983319505803727459}
     m_Modifications:
     - target: {fileID: 100000, guid: abfe6fc5a9b390a488839c1fc3b58dcd, type: 3}
       propertyPath: m_Layer
@@ -584,8 +583,8 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 8037d301b260d214fbea59e83e088904, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: abfe6fc5a9b390a488839c1fc3b58dcd, type: 3}
---- !u!4 &598579789391669290 stripped
+--- !u!4 &6983319504363928163 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400170, guid: abfe6fc5a9b390a488839c1fc3b58dcd, type: 3}
-  m_PrefabInstance: {fileID: 598579789391803136}
+  m_PrefabInstance: {fileID: 6983319504364052809}
   m_PrefabAsset: {fileID: 0}

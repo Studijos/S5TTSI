@@ -6,7 +6,7 @@ public class ZombieManager : MonoBehaviour
 {
     private IEnumerator coroutine;
     [SerializeField]
-    int spawnerCount = 10;
+    int spawnerCount = 20;
     public int maxEnemyCount = 50;
     public float lastSpawnTime1 = 0;
     public float lastSpawnTimeAll = 0;
@@ -44,7 +44,8 @@ public class ZombieManager : MonoBehaviour
         {
             for (int i = 0; i < spawners.Length; i++)
             {
-                Vector3 spawnPos = new Vector3(spawners[i].transform.position.x, 5f, spawners[i].transform.position.z);
+                Vector3 spawnPos = new Vector3(spawners[i].transform.position.x, 2f, spawners[i].transform.position.z);
+                //spawnPos = CreateRandomSpawn(spawnPos);
                 spawnPos.y = Terrain.activeTerrain.SampleHeight(spawnPos);
                 Instantiate(zombie, spawnPos, Quaternion.identity);
 
@@ -54,15 +55,32 @@ public class ZombieManager : MonoBehaviour
 
         }
     }
+    private Vector3 CreateRandomSpawn(Vector3 startPoint)
+    {
+        float deltaX = Random.Range(-50, 50);
+        float deltaZ = Random.Range(-50, 50);
+        return new Vector3(startPoint.x + deltaX, startPoint.y, startPoint.z + deltaZ);
+    }
     public void SpawnEnemy()
     {
         if (enemyCount < maxEnemyCount && Time.time - lastSpawnTime1 >= cooldown1)
         {
-            int spawnPointID = Random.Range(0, spawners.Length);
-            Vector3 spawnPos = new Vector3(spawners[spawnPointID].transform.position.x, 5f, spawners[spawnPointID].transform.position.z);
-            spawnPos.y = Terrain.activeTerrain.SampleHeight(spawnPos);
 
-            Instantiate(zombie, spawnPos, Quaternion.identity);
+            Vector3 validSpawn = new Vector3(380f,0.5f,360f);
+            for(int i = 0; i < 100; i++)
+            {
+                int spawnPointID = Random.Range(0, spawners.Length);
+                Vector3 spawnPos = new Vector3(spawners[spawnPointID].transform.position.x, 2f, spawners[spawnPointID].transform.position.z);
+
+                UnityEngine.AI.NavMeshHit hit;
+                if(UnityEngine.AI.NavMesh.SamplePosition(spawnPos, out hit, 5f, UnityEngine.AI.NavMesh.AllAreas))
+                {
+                    validSpawn = hit.position;
+                    break;
+                }
+            }
+            Debug.Log(validSpawn);
+            Instantiate(zombie, validSpawn, Quaternion.identity);
             enemyCount++;
             lastSpawnTime1 = Time.time;
         }
@@ -72,7 +90,7 @@ public class ZombieManager : MonoBehaviour
     void Update()
     {
         SpawnEnemy();
-        SpawnEnemies();
+        //SpawnEnemies();
         if (Input.GetKeyDown(KeyCode.T))
         {
             SpawnEnemy();

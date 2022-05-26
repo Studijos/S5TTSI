@@ -7,12 +7,13 @@ public class Enemy1Controller : MonoBehaviour
 {
     public GameObject zombie;
     public ZombieManager zombieManager;
+    public GameObject playerCore;
 
     Animator myAnimator;
     [SerializeField]
-    float walkSpeed = 3f;
+    float walkSpeed;
     [SerializeField]
-    float runSpeed = 5f;
+    float runSpeed;
     [SerializeField] 
     float stopDistance;
 
@@ -22,7 +23,7 @@ public class Enemy1Controller : MonoBehaviour
     public float health = 100;
     public bool dead = false;
     public NavMeshAgent agent;
-    public Transform player;
+    public Player player;
     public LayerMask groundMask, playerMask;
     // Patrolling
     //public Vector3 destination;
@@ -42,7 +43,9 @@ public class Enemy1Controller : MonoBehaviour
     {
         zombieManager = FindObjectOfType<ZombieManager>();
         health = 100;
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        player = GameObject.FindObjectOfType<Player>();
+        playerCore = GameObject.Find("PlayerPosition");
+        //playerCam = GameObject.FindWithTag("Main Camera").GetComponent<Camera>();
         agent = GetComponent<NavMeshAgent>();
         myAnimator = GetComponentInChildren<Animator>();
     }
@@ -55,7 +58,7 @@ public class Enemy1Controller : MonoBehaviour
         //OnDrawGizmosSelected();
         if(!dead)
         {
-            float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
+            float distanceToPlayer = Vector3.Distance(transform.position, playerCore.transform.position);
             if (distanceToPlayer <= stopDistance)
             {
                 Attack();
@@ -77,8 +80,8 @@ public class Enemy1Controller : MonoBehaviour
                 Patrol();
             }
 
-            playerInSightRange = Physics.CheckSphere(transform.position, sightRange, playerMask);
-            playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, playerMask);
+            //playerInSightRange = Physics.CheckSphere(transform.position, sightRange, playerMask);
+            //playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, playerMask);
         }
         else
         {
@@ -113,9 +116,9 @@ public class Enemy1Controller : MonoBehaviour
     private void Patrol()
     {
         //agent.isStopped = false;
-        agent.transform.LookAt(player.transform.position);
+        //agent.transform.LookAt(playerCore.transform.position);
         agent.speed = walkSpeed;
-        agent.SetDestination(player.transform.position);
+        agent.SetDestination(playerCore.transform.position);
         myAnimator.enabled = true;
         myAnimator.SetBool("isAttacking", false);
         myAnimator.SetBool("isRunning", false);
@@ -143,9 +146,9 @@ public class Enemy1Controller : MonoBehaviour
     private void Chase()
     {
         //agent.isStopped = false;
-        agent.transform.LookAt(player.transform.position);
+        //agent.transform.LookAt(playerCore.transform.position);
         agent.speed = runSpeed;
-        agent.SetDestination(player.transform.position);
+        agent.SetDestination(playerCore.transform.position);
         myAnimator.enabled = true;
         myAnimator.SetBool("isWalking", false);
         myAnimator.SetBool("isAttacking", false);

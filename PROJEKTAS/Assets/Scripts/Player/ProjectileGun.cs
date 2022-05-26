@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class ProjectileGun : MonoBehaviour
 {
+    public AudioSource shootSound;
     public static ProjectileGun Instance;
     public GameObject bullet;
     public int damage;
@@ -85,7 +86,7 @@ public class ProjectileGun : MonoBehaviour
     private void Shoot()
     {
         readyToShoot = false;
-
+        shootSound.Play();
         muzzleFlash.Play();
         //Ray ray = fpsCam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
         RaycastHit hit;
